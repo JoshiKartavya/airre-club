@@ -1,5 +1,4 @@
-// import Image from "next/image"
-// import Navbar from "@/app/components/navbar/Navbar";
+
 import { Navbar } from "../Components/indexComponents"
 
 const Hero = () => {
