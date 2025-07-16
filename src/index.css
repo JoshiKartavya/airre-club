@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Nunito';
+  src: url('/fonts/nunito/Nunito-Variable.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Nunito';
+  src: url('/fonts/nunito/Nunito-VariableItalic.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Michroma';
+  src: url('/fonts/michroma/Michroma-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('/fonts/bebas/BebasNeue-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+:root {
+  --primary: #000000;
+  --secondary: #ffffff;
+  --contrast: #00ff00;
+}
