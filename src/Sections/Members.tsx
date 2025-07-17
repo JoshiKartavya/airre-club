@@ -45,10 +45,6 @@ const Members = () => {
                 setMembers(data);
                 setLoading(false);
             })
-            .catch((err: any) => {
-                setLoading(false);
-                setMembers([]);
-            });
     }, []);
 
     return (
