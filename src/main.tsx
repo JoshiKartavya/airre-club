@@ -26,7 +26,16 @@ function LenisProvider({ children }: { children: React.ReactNode }) {
     lenis.on('scroll', ScrollTrigger.update)
     ScrollTrigger.scrollerProxy(document.body, {
       scrollTop(value) {
-        return arguments.length ? lenis.scrollTo(value) : lenis.scroll
+        if (arguments.length) {
+          // Only call scrollTo if value is not undefined
+          if (typeof value !== 'undefined') {
+            return lenis.scrollTo(value)
+          }
+          // If value is undefined, do nothing (or could return lenis.scroll)
+          return
+        } else {
+          return lenis.scroll
+        }
       },
       getBoundingClientRect() {
         return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight }
