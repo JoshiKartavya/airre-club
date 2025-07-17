@@ -59,7 +59,6 @@ const About = () => {
         start: 'top 70%',
         end: 'bottom 30%',
         scrub: true,
-        markers: true, // You can turn this off after debugging
       },
     });
 
