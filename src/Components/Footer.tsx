@@ -1,14 +1,18 @@
+interface FooterProps {
+  textColor: string;
+  bgColor: string;
+}
 
-const Footer = () => {
+const Footer = ({ textColor, bgColor }: FooterProps) => {
   return (
-    <footer className="w-full h-screen flex flex-col justify-center items-end bg-transparent font-michroma relative pt-12 pb-8 px-4">
+    <footer className="w-screen h-screen flex flex-col justify-center items-end bg-transparent relative pt-12 pb-8 px-4" style={{fontFamily: "michroma", color: textColor, backgroundColor: bgColor}}>
       {/* Contact us top left */}
       <div className="absolute left-12 top-12 xl:text-[24px] font-mono flex items-center gap-2">
         <span className="text-xl">&#123;&#125;</span> Contact us
       </div>
 
       {/* Main content */}
-      <div className="flex flex-col items-start w-full max-w-3xl">
+      <div className="flex flex-col items-start w-full max-w-3xl ">
         <h2 className="text-[32px] md:text-[32px] lg:text-[32px] xl:text-[64px] 2xl:text-[64px] font-michroma text-center mb-6 leading-tight">
             Let's Shape the<br />future together!
         </h2>

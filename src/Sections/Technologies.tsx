@@ -19,7 +19,7 @@ const Technologies = () => {
   };
 
   return (
-    <div id="Experties" className="services-main h-max w-full bg-[var(--primary)] text-[var(--secondary)] relative">
+    <div id="Experties" className="services-main h-max w-full bg-[var(--primary)] text-[var(--secondary)] relative" style={{fontFamily: "michroma"}}>
       {/* Contact us top left */}
       <div className="absolute left-12 top-12 xl:text-[24px] font-mono flex items-center gap-2">
         <span className="text-xl">&#123;&#125;</span> Our Experties

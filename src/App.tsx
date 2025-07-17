@@ -7,9 +7,7 @@ const App = () => {
     <>
      <Hero/>
      <Technologies/>
-     <div className='w-full h-screen bg-[var(--secondary)] text-[var(--primary)] font-michroma flex flex-col items-center justify-center'>
-        <Footer/>
-     </div>
+     <Footer textColor="var(--primary)" bgColor="var(--secondary)"/>
     </>
   )
 }

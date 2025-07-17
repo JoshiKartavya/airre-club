@@ -1,20 +1,30 @@
 
 import { useState } from "react";
 
-const Navbar = () => {
+interface NavbarProps {
+  textColor: string;
+  bgColor: string;
+}
+
+const Navbar = ({ textColor, bgColor }: NavbarProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <>
       {/* Navbar */}
-      <div className="w-full flex flex-row items-center justify-between p-4 bg-transparent absolute top-0 left-0 z-20">
-        <h1 className="font-michroma uppercase text-[var(--primary)] xl:text-5xl">airre</h1>
+      <div
+        className="w-full flex flex-row items-center justify-between p-4 absolute top-0 left-0 z-20"
+        style={{
+          color: textColor,
+          backgroundColor: bgColor,
+        }}
+      >
+        <h1 className="font-michroma uppercase xl:text-5xl">airre</h1>
         <div
-          className="menu-icon relative xl:w-[72px] xl:h-[72px] cursor-pointer"
+          className="menu-icon relative cursor-pointer"
           onClick={() => setMenuOpen(true)}
         >
-          <img src="/icons/menu.svg" alt="Menu Icon" />
-
+          <img className="w-[72px] h-[72px]" src="/icons/menu.svg" alt="Menu Icon" style={{filter: `invert(${textColor === "var(--primary)" ? "0" : "1"})`}}/>
         </div>
       </div>
 
