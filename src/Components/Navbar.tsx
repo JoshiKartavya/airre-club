@@ -32,8 +32,8 @@ const Navbar = ({ textColor, bgColor }: NavbarProps) => {
       {menuOpen && (
         <div className="fixed top-0 right-0 h-screen w-1/2 min-w-[320px] bg-black text-white z-50 flex flex-col justify-start p-8 font-michroma animate-fade-in">
           {/* Close Icon */}
-          <div className="flex justify-end relative">
-            <button className="absolute top-8 right-0" onClick={() => setMenuOpen(false)} aria-label="Close menu">
+          <div className="flex justify-end relative cursor-pointer">
+            <button className="absolute top-8 right-0 cursor-pointer" onClick={() => setMenuOpen(false)} aria-label="Close menu">
               <img src="/icons/cross.svg" alt="Close Icon" />
             </button>
           </div>

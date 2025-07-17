@@ -47,12 +47,12 @@ const BlogsSection = () => {
   ]
 
   return (
-    <div className='w-screen h-max bg-[var(--primary)] text-[var(--secondary)] font-michroma flex flex-col items-center justify-start pt-28'>
+    <div className='w-screen h-max bg-[var(--primary)] text-[var(--secondary)] font-michroma flex flex-col items-center justify-start pt-28 overflow-x-hidden'>
       <div className='w-4/5 flex flex-col items-start justify-start '>
         <h1 className='text-[32px] md:text-[32px] lg:text-[32px] xl:text-[64px] 2xl:text-[64px] font-michroma mb-8'>Blogs</h1>
         <div className='flex flex-row items-center justify-start gap-12 w-full'>
           {catogaries.map((category) => (
-            <div key={category.id} className='text-[16px] md:text-[16px] lg:text-[16px] xl:text-[24px] 2xl:text-[24px] font-michroma'>
+            <div key={category.id} className='text-[16px] md:text-[16px] lg:text-[16px] xl:text-[24px] 2xl:text-[24px] font-michroma hover:underline cursor-pointer'>
               {category.name}
             </div>
           ))}

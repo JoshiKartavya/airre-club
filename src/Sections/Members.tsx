@@ -48,7 +48,7 @@ const Members = () => {
     }, []);
 
     return (
-        <div className='w-screen h-screen bg-[var(--secondary)] text-[var(--primary)] font-michroma flex flex-col items-center justify-start pt-28' style={{fontFamily: "michroma"}}>
+        <div className='max-w-screen h-screen bg-[var(--secondary)] text-[var(--primary)] font-michroma flex flex-col items-center justify-start pt-28' style={{fontFamily: "michroma"}}>
             <div className='w-[96%] rounded-2xl h-full flex flex-col items-start justify-start p-8 bg-[var(--primary)] text-[var(--secondary)] relative'>
                 <div className="absolute left-12 top-12 xl:text-[24px] font-mono flex items-center gap-2">
                     <span className="text-xl">&#123;&#125;</span> Our Members
