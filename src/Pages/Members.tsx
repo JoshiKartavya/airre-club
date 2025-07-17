@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import sanityClient from "../sanityClient";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../Components/Navbar";
 
 type Member = {
   _id: string;
@@ -52,35 +53,34 @@ const Members = () => {
   }, []);
 
   return (
-    <div className='w-screen min-h-screen bg-[var(--secondary)] text-[var(--primary)] font-michroma flex flex-col items-center justify-start pt-28'>
-      <div className='w-[96%] rounded-2xl min-h-[70vh] flex flex-col items-start justify-start p-8 bg-[var(--primary)] text-[var(--secondary)] relative'>
-        <div className="absolute left-12 top-12 xl:text-[24px] font-mono flex items-center gap-2">
-          <span className="text-xl">&#123;&#125;</span> Our Members
-        </div>
-        <div className='member-main w-full flex flex-col items-center justify-start gap-4 mt-12'>
-          <div className='member-cards w-full flex flex-row flex-wrap items-center justify-start gap-4'>
-            {loading ? (
-              <div>Loading...</div>
-            ) : (
-              members.map((member) => (
-                <div
-                  key={member._id}
-                  className="p-4 flex flex-col items-start w-[320px] bg-[var(--secondary)] text-[var(--primary)] rounded-xl shadow cursor-pointer hover:scale-105 transition"
-                  onClick={() => member.slug?.current && navigate(`/members/${member.slug.current}`)}
-                >
-                  {member.coverImage?.asset?.url && (
-                    <img
-                      src={member.coverImage.asset.url}
-                      alt={member.name}
-                      className="w-full h-48 object-cover mb-2 rounded"
-                    />
-                  )}
-                  <div className="font-bold text-lg">{member.name}</div>
-                  {member.role && <div className="text-sm text-gray-500">{member.role}</div>}
-                </div>
-              ))
-            )}
-          </div>
+    <div className='w-screen min-h-screen bg-[var(--primary)] text-[var(--secondary)] font-michroma flex flex-col items-start justify-start py-28 px-32' style={{ fontFamily: "michroma" }}>
+      <Navbar textColor="var(--secondary)" bgColor="var(--primary)" />
+      <h1 className="text-[32px] md:text-[32px] lg:text-[32px] xl:text-[64px] 2xl:text-[64px]">
+        Supportive pillers of AIRRE
+      </h1>
+      <div className='member-main w-full flex flex-col items-center justify-start gap-4 mt-12'>
+        <div className='member-cards w-full flex flex-row flex-wrap items-center justify-start gap-4'>
+          {loading ? (
+            <div>Loading...</div>
+          ) : (
+            members.map((member) => (
+              <div
+                key={member._id}
+                className="flex flex-col items-start w-[380px] cursor-pointer"
+                onClick={() => member.slug?.current && navigate(`/members/${member.slug.current}`)}
+              >
+                {member.coverImage?.asset?.url && (
+                  <img
+                    src={member.coverImage.asset.url}
+                    alt={member.name}
+                    className="w-full h-full object-cover mb-2"
+                  />
+                )}
+                <div className="font-bold text-lg">{member.name}</div>
+                {member.role && <div className="text-sm text-gray-500">{member.role}</div>}
+              </div>
+            ))
+          )}
         </div>
       </div>
     </div>

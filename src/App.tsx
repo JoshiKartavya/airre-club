@@ -1,5 +1,5 @@
 import './index.css'
-import { Hero, Technologies, Members } from './Sections/indexSections'
+import { Hero, Technologies, Members, Projects, About } from './Sections/indexSections'
 import { Footer } from './Components/indexComponents'
 
 const App = () => {
@@ -8,6 +8,8 @@ const App = () => {
      <div className='overflow-x-hidden'>
       <Hero/>
       <Technologies/>
+      <Projects />
+      <About />
       <Members/>
       <Footer textColor="var(--primary)" bgColor="var(--secondary)"/>
      </div>

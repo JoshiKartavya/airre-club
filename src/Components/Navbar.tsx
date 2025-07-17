@@ -17,6 +17,7 @@ const Navbar = ({ textColor, bgColor }: NavbarProps) => {
         style={{
           color: textColor,
           backgroundColor: bgColor,
+          fontFamily: "michroma"
         }}
       >
         <h1 className="font-michroma uppercase xl:text-5xl">airre</h1>
