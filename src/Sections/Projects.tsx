@@ -99,7 +99,7 @@ const Projects = () => {
   }, []);
 
   return (
-    <div className='w-screen min-h-screen bg-[var(--primary)] text-[var(--secondary)] font-michroma flex flex-col items-center justify-start pt-28 overflow-x-hidden relative' style={{fontFamily: "michroma"}}>
+    <div className='w-screen h-max bg-[var(--primary)] text-[var(--secondary)] font-michroma flex flex-col items-center justify-start pb-32 overflow-x-hidden relative' style={{fontFamily: "michroma"}}>
        {/* Contact us top left */}
        <div className="absolute left-12 top-12 xl:text-[24px] font-mono flex items-center gap-2">
         <span className="text-xl">&#123;&#125;</span> Selected works
@@ -132,7 +132,7 @@ const Projects = () => {
                   <img 
                     src={project.coverPhoto.asset.url} 
                     alt={project.title} 
-                    className='w-full h-full object-cover rounded mb-4'
+                    className='w-full max-h-[900px] object-cover rounded mb-4'
                   />
                 )}
               </div>
