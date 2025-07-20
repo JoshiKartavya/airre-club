@@ -78,9 +78,6 @@ const BlogsSection = () => {
                     onClick={() => window.open(blog.blogLink, '_blank')}
                   />
                 )}
-                {/* {blog.blogLink && (
-                  <a href={blog.blogLink} target='_blank' rel='noopener noreferrer' className='text-blue-600 underline'>Read Blog</a>
-                )} */}
               </div>
             ))}
           </div>

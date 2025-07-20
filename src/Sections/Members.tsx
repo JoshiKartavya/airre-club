@@ -2,6 +2,12 @@ import { useEffect, useState } from "react";
 import sanityClient from "../sanityClient";
 import { useNavigate } from "react-router-dom";
 
+// Social type based on Sanity schema (array of { platform, url })
+type Social = {
+    platform: string;
+    url: string;
+};
+
 type Member = {
     _id: string;
     name: string;
@@ -12,12 +18,7 @@ type Member = {
         };
     };
     about?: string;
-    social?: {
-        twitter?: string;
-        instagram?: string;
-        linkedin?: string;
-        youtube?: string;
-    };
+    social?: Social[];
     slug?: { current: string };
 };
 
@@ -73,7 +74,6 @@ const Members = () => {
                                         />
                                     )}
                                     <div className="font-bold text-lg">{member.name}</div>
-                                    {member.role && <div className="text-sm text-gray-500">{member.role}</div>}
                                 </div>
                             ))
                         )}

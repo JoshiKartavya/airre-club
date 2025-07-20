@@ -20,7 +20,9 @@ const Navbar = ({ textColor, bgColor }: NavbarProps) => {
           fontFamily: "michroma"
         }}
       >
-        <h1 className="font-michroma uppercase xl:text-5xl">airre</h1>
+        <h1 className="font-michroma uppercase xl:text-5xl cursor-pointer">
+          <a href="/">airre</a>
+        </h1>
         <div
           className="menu-icon relative cursor-pointer"
           onClick={() => setMenuOpen(true)}
