@@ -79,7 +79,6 @@ const MemberDetail = () => {
   useEffect(() => {
     if (!slug) return;
     setLoading(true);
-    // Fetch member by slug
     sanityClient
       .fetch(
         `*[_type == "member" && slug.current == $slug][0]{
@@ -94,32 +93,43 @@ const MemberDetail = () => {
         { slug }
       )
       .then((data: any) => {
-        // Ensure social is always an array of {platform, url} with url as string or undefined
+        if (!data) {
+          // Handle case where no member is found
+          setMember(null);
+          setLoading(false);
+          return;
+        }
+
         let socials: MemberSocial[] = [];
+        
+        // Case 1: `social` is an object like { twitter: "...", instagram: "..." }
         if (data?.social && typeof data.social === "object" && !Array.isArray(data.social)) {
-          // Convert object with keys (twitter, instagram, etc) to array of {platform, url}
           socials = Object.entries(data.social)
             .filter(([_, url]) => typeof url === "string" && url.length > 0)
             .map(([platform, url]) => ({
               platform,
-              url
-            } as MemberSocial));
-        } else if (Array.isArray(data?.social)) {
-          socials = data.social.map((soc: any) => {
-            const platform = typeof soc.platform === "string" ? soc.platform : undefined;
-            const url = typeof soc.url === "string" ? soc.url : undefined;
-            return { platform, url } as MemberSocial;
-          });
+              // FIX: Assert that 'url' is a string here.
+              // We know it is because of the .filter() above.
+              url: url as string,
+            }));
+        } 
+        // Case 2: `social` is already an array from Sanity
+        else if (Array.isArray(data?.social)) {
+            // Filter out any invalid entries from the array
+            socials = data.social.filter(
+                (soc: any): soc is MemberSocial => 
+                    soc && typeof soc.platform === 'string' && typeof soc.url === 'string'
+            );
         }
 
         setMember({
           ...data,
-          social: socials,
+          social: socials, // Now `socials` is correctly typed as MemberSocial[]
         });
+        
         setImages(Array.isArray(data?.images) ? data.images : []);
 
         if (data?._id) {
-          // Fetch blogs by this member
           sanityClient
             .fetch(
               `*[_type == "blog" && author._ref == $memberId]{
@@ -130,14 +140,15 @@ const MemberDetail = () => {
               }`,
               { memberId: data._id }
             )
-            .then((blogs: Blog[]) => setBlogs(blogs));
+            .then((blogsData: Blog[]) => setBlogs(blogsData));
         } else {
           setBlogs([]);
         }
 
         setLoading(false);
       })
-      .catch(() => {
+      .catch((error) => {
+        console.error("Failed to fetch member details:", error);
         setMember(null);
         setBlogs([]);
         setImages([]);
