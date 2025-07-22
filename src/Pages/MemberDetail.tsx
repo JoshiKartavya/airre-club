@@ -103,9 +103,13 @@ const MemberDetail = () => {
             .map(([platform, url]) => ({
               platform,
               url: typeof url === "string" ? url : undefined
-            }));
+            } as MemberSocial)); // Explicitly cast to MemberSocial
         } else if (Array.isArray(data?.social)) {
-          socials = data.social;
+          // Defensive: ensure each entry is of correct type
+          socials = data.social.map((soc: any) => ({
+            platform: typeof soc.platform === "string" ? soc.platform : undefined,
+            url: typeof soc.url === "string" ? soc.url : undefined
+          }));
         }
         setMember({
           ...data,
