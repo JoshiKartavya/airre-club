@@ -15,7 +15,8 @@ function LenisProvider({ children }: { children: React.ReactNode }) {
     // Create Lenis instance
     const lenis = new Lenis({
       lerp: 0.1,
-      smooth: true,
+      // 'smooth' is not a valid option in LenisOptions, so we remove it.
+      // If you want smooth scrolling, 'lerp' is sufficient for most cases.
     })
 
     // Animation frame loop for Lenis
