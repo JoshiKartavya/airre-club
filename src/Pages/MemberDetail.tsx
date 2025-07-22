@@ -102,7 +102,7 @@ const MemberDetail = () => {
             .filter(([_, url]) => typeof url === "string" && url.length > 0)
             .map(([platform, url]) => ({
               platform,
-              url: typeof url === "string" ? url : undefined,
+              url
             } as MemberSocial));
         } else if (Array.isArray(data?.social)) {
           socials = data.social.map((soc: any) => {
