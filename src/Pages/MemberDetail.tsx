@@ -102,20 +102,22 @@ const MemberDetail = () => {
             .filter(([_, url]) => typeof url === "string" && url.length > 0)
             .map(([platform, url]) => ({
               platform,
-              url: typeof url === "string" ? url : undefined
-            } as MemberSocial)); // Explicitly cast to MemberSocial
+              url: typeof url === "string" ? url : undefined,
+            } as MemberSocial));
         } else if (Array.isArray(data?.social)) {
-          // Defensive: ensure each entry is of correct type
-          socials = data.social.map((soc: any) => ({
-            platform: typeof soc.platform === "string" ? soc.platform : undefined,
-            url: typeof soc.url === "string" ? soc.url : undefined
-          }));
+          socials = data.social.map((soc: any) => {
+            const platform = typeof soc.platform === "string" ? soc.platform : undefined;
+            const url = typeof soc.url === "string" ? soc.url : undefined;
+            return { platform, url } as MemberSocial;
+          });
         }
+
         setMember({
           ...data,
           social: socials,
         });
         setImages(Array.isArray(data?.images) ? data.images : []);
+
         if (data?._id) {
           // Fetch blogs by this member
           sanityClient
@@ -132,6 +134,7 @@ const MemberDetail = () => {
         } else {
           setBlogs([]);
         }
+
         setLoading(false);
       })
       .catch(() => {
@@ -141,6 +144,7 @@ const MemberDetail = () => {
         setLoading(false);
       });
   }, [slug]);
+
 
   return (
     <div className='w-full min-h-screen bg-[var(--primary)] text-[var(--secondary)] font-michroma flex flex-col items-center justify-start pt-28 overflow-x-hidden' style={{ fontFamily: "michroma" }}>
