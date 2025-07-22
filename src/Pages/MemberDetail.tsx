@@ -4,24 +4,29 @@ import { useEffect, useState } from "react";
 import sanityClient from "../sanityClient";
 
 // Types
+interface MemberImage {
+  asset?: { url?: string };
+}
+
+interface MemberSocial {
+  platform?: string;
+  url?: string;
+}
+
 interface Member {
   _id: string;
   name: string;
   role?: string;
-  coverImage?: { asset: { url: string } };
+  coverImage?: { asset?: { url?: string } };
   about?: string;
-  social?: {
-    twitter?: string;
-    instagram?: string;
-    linkedin?: string;
-    youtube?: string;
-  };
+  social?: MemberSocial[]; // Fix: social is an array of objects, not a single object
+  // images?: MemberImage[];  // Removed from interface to fix TS error
 }
 
 interface Blog {
   _id: string;
   title: string;
-  coverImage?: { asset: { url: string } };
+  coverImage?: { asset?: { url?: string } };
   publishedAt?: string;
 }
 
@@ -70,6 +75,7 @@ const MemberDetail = () => {
   const [member, setMember] = useState<Member | null>(null);
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [loading, setLoading] = useState(true);
+  const [images, setImages] = useState<MemberImage[]>([]); // Local state for images
 
   useEffect(() => {
     if (!slug) return;
@@ -88,8 +94,22 @@ const MemberDetail = () => {
         }`,
         { slug }
       )
-      .then((data: Member) => {
-        setMember(data);
+      .then((data: any) => {
+        // Fix: ensure social is always an array of {platform, url}
+        let socials: MemberSocial[] = [];
+        if (data?.social && typeof data.social === "object" && !Array.isArray(data.social)) {
+          // Convert object with keys (twitter, instagram, etc) to array of {platform, url}
+          socials = Object.entries(data.social)
+            .filter(([_, url]) => typeof url === "string" && url.length > 0)
+            .map(([platform, url]) => ({ platform, url }));
+        } else if (Array.isArray(data?.social)) {
+          socials = data.social;
+        }
+        setMember({
+          ...data,
+          social: socials,
+        });
+        setImages(Array.isArray(data?.images) ? data.images : []);
         if (data?._id) {
           // Fetch blogs by this member
           sanityClient
@@ -107,6 +127,12 @@ const MemberDetail = () => {
           setBlogs([]);
         }
         setLoading(false);
+      })
+      .catch(() => {
+        setMember(null);
+        setBlogs([]);
+        setImages([]);
+        setLoading(false);
       });
   }, [slug]);
 
@@ -118,12 +144,12 @@ const MemberDetail = () => {
           <div>Loading...</div>
         ) : member ? (
           <>
-            <div className="w-full px-32 flex flex-col xl:gap-8">
-              <h1 className="text-[] md:text-[] lg:text-[] xl:text-[48px] 2xl:text-[52px] mb-2">{member.name} | {member.role}</h1>
+            <div className="w-full px-4 md:px-16 xl:px-32 flex flex-col xl:gap-8">
+              <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-[48px] 2xl:text-[52px] mb-2">{member.name} {member.role ? `| ${member.role}` : ""}</h1>
 
               {/* Member content */}
-              <div className="w-full flex xl:flex-row justify-start xl:gap-12">
-                <div className="image w-[456px]">
+              <div className="w-full flex flex-col xl:flex-row justify-start xl:gap-12">
+                <div className="image w-full max-w-[456px]">
                   {member.coverImage?.asset?.url && (
                     <img
                       src={member.coverImage.asset.url}
@@ -132,7 +158,7 @@ const MemberDetail = () => {
                     />
                   )}
                 </div>
-                <div className="memberContent w-3/5 xl:gap-18">
+                <div className="memberContent w-full xl:w-3/5 xl:gap-18">
                   <h2 className="xl:text-[32px]">
                     {member.about
                       ? highlightMemberNameAndNumbers(member.about, member.name)
@@ -142,7 +168,7 @@ const MemberDetail = () => {
                     <h3 className="xl:text-[40px] font-thin">You can connect me on &darr;</h3>
                     {/* Social Media Section */}
                     {Array.isArray(member.social) && member.social.length > 0 && (
-                      <div className="flex flex-row items-center gap-8 mt-2">
+                      <div className="flex flex-row flex-wrap items-center gap-8 mt-2">
                         {member.social.map((soc, idx) =>
                           soc.url && soc.platform ? (
                             <h1
@@ -153,7 +179,7 @@ const MemberDetail = () => {
                                 window.open(soc.url, "_blank", "noopener,noreferrer");
                               }}
                             >
-                              {soc.platform}
+                              {soc.platform.charAt(0).toUpperCase() + soc.platform.slice(1)}
                             </h1>
                           ) : null
                         )}
@@ -163,17 +189,20 @@ const MemberDetail = () => {
                 </div>
               </div>
 
-              {/* Images section */}
-              <h1 className="text-[] md:text-[] lg:text-[] xl:text-[48px] 2xl:text-[52px] mb-2">Some of my images you can look at</h1>
-              <div className="flex flex-wrap gap-4 mb-8">
-                {Array.isArray(member.images) && member.images.length > 0 ? (
-                  member.images.map((img: any, idx: number) =>
+              {/* Images Section */}
+              <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-[48px] 2xl:text-[52px] mb-6">
+                Some of my images you can look at
+              </h1>
+
+              <div className="columns-2 sm:columns-2 md:columns-3 lg:columns-3 xl:columns-4 2xl:columns-4 gap-4 space-y-4">
+                {Array.isArray(images) && images.length > 0 ? (
+                  images.map((img, idx) =>
                     img?.asset?.url ? (
                       <img
                         key={idx}
                         src={img.asset.url}
                         alt={`Member image ${idx + 1}`}
-                        className="w-48 h-48 object-cover rounded-lg"
+                        className="w-full mb-4 rounded-lg break-inside-avoid"
                       />
                     ) : null
                   )
@@ -182,24 +211,49 @@ const MemberDetail = () => {
                 )}
               </div>
 
+              {/* Blog section */}
+              <div>
+                <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-[48px] 2xl:text-[52px] mb-2">Look 👀 at my blogs :</h1>
+                {blogs.length === 0 ? (
+                  <div>No blogs found for this member.</div>
+                ) : (
+                  <div
+                    className="
+                      grid 
+                      grid-cols-1 
+                      sm:grid-cols-2 
+                      md:grid-cols-3 
+                      xl:grid-cols-4 
+                      gap-6
+                    "
+                  >
+                    {blogs.map((blog) => (
+                      <div
+                        key={blog._id}
+                        className="p-4 flex flex-col items-start"
+                      >
+                        {blog.coverImage?.asset?.url && (
+                          <img
+                            src={blog.coverImage.asset.url}
+                            alt={blog.title}
+                            className="w-full h-40 object-cover rounded mb-3"
+                          />
+                        )}
+                        <h2 className="text-lg font-semibold text-center mb-2">{blog.title}</h2>
+                        {blog.publishedAt && (
+                          <p className="text-sm text-gray-500 mb-1">
+                            {new Date(blog.publishedAt).toLocaleDateString()}
+                          </p>
+                        )}
+                        {/* You can add a link to the blog detail page here if available */}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
-            {blogs.length === 0 ? (
-              <div>No blogs found for this member.</div>
-            ) : (
-              <ul className="w-full flex flex-col gap-4">
-                {blogs.map((blog) => (
-                  <li key={blog._id} className="p-4 border rounded-lg flex items-center gap-4 bg-[var(--secondary)] text-[var(--primary)]">
-                    {blog.coverImage?.asset?.url && (
-                      <img src={blog.coverImage.asset.url} alt={blog.title} className="w-20 h-20 object-cover rounded" />
-                    )}
-                    <div>
-                      <div className="font-bold text-lg">{blog.title}</div>
-                      {blog.publishedAt && <div className="text-xs text-gray-500">{new Date(blog.publishedAt).toLocaleDateString()}</div>}
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            )}
+
+
           </>
         ) : (
           <div>Member not found.</div>
