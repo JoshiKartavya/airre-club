@@ -19,8 +19,7 @@ interface Member {
   role?: string;
   coverImage?: { asset?: { url?: string } };
   about?: string;
-  social?: MemberSocial[]; // Fix: social is an array of objects, not a single object
-  // images?: MemberImage[];  // Removed from interface to fix TS error
+  social?: MemberSocial[];
 }
 
 interface Blog {
@@ -75,7 +74,7 @@ const MemberDetail = () => {
   const [member, setMember] = useState<Member | null>(null);
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [loading, setLoading] = useState(true);
-  const [images, setImages] = useState<MemberImage[]>([]); // Local state for images
+  const [images, setImages] = useState<MemberImage[]>([]);
 
   useEffect(() => {
     if (!slug) return;
@@ -95,13 +94,16 @@ const MemberDetail = () => {
         { slug }
       )
       .then((data: any) => {
-        // Fix: ensure social is always an array of {platform, url}
+        // Ensure social is always an array of {platform, url} with url as string or undefined
         let socials: MemberSocial[] = [];
         if (data?.social && typeof data.social === "object" && !Array.isArray(data.social)) {
           // Convert object with keys (twitter, instagram, etc) to array of {platform, url}
           socials = Object.entries(data.social)
             .filter(([_, url]) => typeof url === "string" && url.length > 0)
-            .map(([platform, url]) => ({ platform, url }));
+            .map(([platform, url]) => ({
+              platform,
+              url: typeof url === "string" ? url : undefined
+            }));
         } else if (Array.isArray(data?.social)) {
           socials = data.social;
         }
