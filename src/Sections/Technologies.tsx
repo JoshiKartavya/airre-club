@@ -19,7 +19,7 @@ const Technologies = () => {
   };
 
   return (
-    <div id="Experties" className="services-main h-max w-full bg-[var(--primary)] text-[var(--secondary)] relative">
+    <div id="Experties" className="services-main h-max w-full bg-[var(--primary)] text-[var(--secondary)] relative" style={{fontFamily: "michroma"}}>
       {/* Contact us top left */}
       <div className="absolute left-12 top-12 xl:text-[24px] font-mono flex items-center gap-2">
         <span className="text-xl">&#123;&#125;</span> Our Experties
@@ -28,11 +28,11 @@ const Technologies = () => {
         <div className="top-data w-[70%] h-full relative flex flex-col justify-start pt-20 xl:pt-60 items-center">
           <h1 className="ser-title text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-6xl 2xl:text-7xl font-bold w-4/5 xl:w-4/5 font-mono">
             Our team not only make simple projects, we{" "}
-            <span className="text-[var(--contrast)] font-thin opacity-50 text-[var(--secondary)]">
+            <span className="text-[var(--contrast)] font-thin text-[var(--contrast)]">
               contribute
             </span>{" "}
             building new{" "}
-            <span className="text-[var(--contrast)] font-thin opacity-50 text-[var(--secondary)]">
+            <span className="text-[var(--contrast)] font-thin text-[var(--contrast)]">
               human civilization.
             </span>{" "}
           </h1>

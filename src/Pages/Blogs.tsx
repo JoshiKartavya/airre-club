@@ -4,12 +4,10 @@ import { Navbar, Footer } from '../Components/indexComponents'
 const Blogs = () => {
   return (
     <>
-        <div className='w-full h-screen font-michroma flex flex-col items-center justify-center'>
-            <Navbar/>
+        <div className='w-full min-h-screen flex flex-col items-center justify-start overflow-x-hidden' style={{fontFamily: "michroma"}}>
+            <Navbar textColor="var(--secondary)" bgColor="var(--primary)" />
             <BlogsSection/>
-            <div className='w-full h-screen bg-[var(--primary)] text-[var(--secondary)] font-michroma flex flex-col items-center justify-center'>
-                <Footer/>
-            </div>
+            <Footer textColor="var(--secondary)" bgColor="var(--primary)"/>
         </div>
     </>
   )
