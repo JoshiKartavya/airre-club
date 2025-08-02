@@ -12,6 +12,7 @@
   "dependencies": {
     "@sanity/client": "^7.8.0",
     "@studio-freight/lenis": "^1.0.42",
+    "@studio-freight/lenis": "^1.0.42",
     "@tailwindcss/vite": "^4.1.11",
     "clsx": "^2.1.1",
     "gsap": "^3.13.0",

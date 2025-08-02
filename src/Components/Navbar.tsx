@@ -7,6 +7,12 @@ interface NavbarProps {
 }
 
 const Navbar = ({ textColor, bgColor }: NavbarProps) => {
+interface NavbarProps {
+  textColor: string;
+  bgColor: string;
+}
+
+const Navbar = ({ textColor, bgColor }: NavbarProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -25,8 +31,10 @@ const Navbar = ({ textColor, bgColor }: NavbarProps) => {
         </h1> */}
         <div
           className="menu-icon relative cursor-pointer"
+          className="menu-icon relative cursor-pointer"
           onClick={() => setMenuOpen(true)}
         >
+          <img className="w-[72px] h-[72px]" src="/icons/menu.svg" alt="Menu Icon" style={{filter: `invert(${textColor === "var(--primary)" ? "0" : "1"})`}}/>
           <img className="w-[72px] h-[72px]" src="/icons/menu.svg" alt="Menu Icon" style={{filter: `invert(${textColor === "var(--primary)" ? "0" : "1"})`}}/>
         </div>
       </div>
@@ -35,6 +43,8 @@ const Navbar = ({ textColor, bgColor }: NavbarProps) => {
       {menuOpen && (
         <div className="fixed top-0 right-0 h-screen w-screen min-w-[320px] bg-black text-white z-50 flex flex-col justify-start p-8 font-michroma animate-fade-in">
           {/* Close Icon */}
+          <div className="flex justify-end relative cursor-pointer">
+            <button className="absolute top-8 right-0 cursor-pointer" onClick={() => setMenuOpen(false)} aria-label="Close menu">
           <div className="flex justify-end relative cursor-pointer">
             <button className="absolute top-8 right-0 cursor-pointer" onClick={() => setMenuOpen(false)} aria-label="Close menu">
               <img src="/icons/cross.svg" alt="Close Icon" />

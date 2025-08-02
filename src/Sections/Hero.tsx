@@ -17,8 +17,11 @@ const Hero = () => {
                 {/* <div className="hero-content flex flex-col h-max mb-32 pl-10">
                         <h1 className="text-[32px]">we are</h1>
                         <h1 className="text-[220px] uppercase" style={{fontFamily: "bebas neue"}}>airre</h1>
+                        <h1 className="text-[220px] uppercase" style={{fontFamily: "bebas neue"}}>airre</h1>
                         <h1 className="text-[32px]">ai - robotics - rocketry - energy</h1>
                     </div>
+                    <div className="absolute z-10 right-10 top-40">
+                        <div className="image relative w-[400px] h-[400px] md:w-[500px] md:h-[500px] lg:w-[600px] lg:h-[600px] xl:w-[800px] xl:h-[800px]">
                     <div className="absolute z-10 right-10 top-40">
                         <div className="image relative w-[400px] h-[400px] md:w-[500px] md:h-[500px] lg:w-[600px] lg:h-[600px] xl:w-[800px] xl:h-[800px]">
                             <img src="/images/hero-model.png" alt="image" />
