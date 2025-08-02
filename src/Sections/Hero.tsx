@@ -45,7 +45,7 @@ const Hero = () => {
                         </div>
                     </div>
                 </div>
-                <img className="absolute bottom-0 aspect-[746/968] w-[35%] left-1/2 -translate-x-1/2" src="/images/Hero-Model.png" alt="image" />
+                <img className="absolute bottom-0 aspect-[746/968] w-[35%] left-1/2 -translate-x-1/2" src="/images/hero-model.png" alt="image" />
             </div>
         </>
     )
