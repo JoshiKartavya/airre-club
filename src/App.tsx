@@ -1,11 +1,11 @@
 import './index.css'
 import { Hero, Technologies, Members, Projects, About } from './Sections/indexSections'
-import { Footer, Loader } from './Components/indexComponents'
-import { useEffect, useRef, useState } from 'react'
+import { Footer } from './Components/indexComponents'
+import { useEffect, useRef } from 'react'
 
 const App = () => {
 
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
 
   // Store references to ticker callback and Lenis instance for cleanup
   const lenisRef = useRef<any>(null)
