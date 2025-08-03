@@ -32,6 +32,10 @@
 @theme inline {
   --animate-spotlight: spotlight 2s ease 0.75s 1 forwards;
 }
+
+body {
+  background: #000;
+}
  
 @keyframes spotlight {
   0% {

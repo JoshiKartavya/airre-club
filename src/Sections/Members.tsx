@@ -30,7 +30,7 @@ const Members = () => {
     useEffect(() => {
         sanityClient
             .fetch(
-                `*[_type == "member"]{
+                `*[_type == "member" && role == "Leader"]{
                     _id,
                     name,
                     role,
