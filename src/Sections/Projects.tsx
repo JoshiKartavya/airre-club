@@ -99,39 +99,44 @@ const Projects = () => {
   }, []);
 
   return (
-    <div className='w-screen h-max bg-[var(--primary)] text-[var(--secondary)] font-michroma flex flex-col items-center justify-start pb-32 overflow-x-hidden relative' style={{fontFamily: "michroma"}}>
-       {/* Contact us top left */}
-       <div className="absolute left-12 top-12 xl:text-[24px] font-mono flex items-center gap-2">
+    <div className='w-screen h-max bg-[var(--primary)] text-[var(--secondary)] font-michroma flex flex-col items-center justify-start pb-32 overflow-x-hidden relative' style={{ fontFamily: "michroma" }}>
+
+      {/* Contact us top left */}
+      <div className="absolute left-12 top-12 xl:text-[24px] font-mono flex items-center gap-2">
         <span className="text-xl">&#123;&#125;</span> Selected works
       </div>
+
+      {/* Projects text animation */}
       <div className='w-4/5 flex flex-col items-start justify-start '>
         <h1
           id='project-hook'
           ref={h1Ref}
-          className='text-[32px] md:text-[32px] lg:text-[32px] xl:text-[64px] 2xl:text-[64px] font-michroma w-4/5 my-60'
+          className='text-[32px] md:text-[32px] lg:text-[32px] xl:text-[64px] 2xl:text-[64px] font-michroma w-4/5 my-28 xl:my-60'
         >
-            Presenting some of our <span className='text-[var(--contrast)]'>contribution</span> to new era of modern civilization 
+          Presenting some of our <span className='text-[var(--contrast)]'>contribution</span> to new era of modern civilization
         </h1>
+
+        {/* Projects */}
         {loading ? (
           <div>Loading...</div>
         ) : projects.length === 0 ? (
           <div>No projects found.</div>
         ) : (
-          <div className='flex flex-col items-center justify-start gap-4 w-full mt-12'>
+          <div className='flex flex-col items-center justify-start gap-4 w-full mt-12 xl:mt-24'>
             {projects.map((project) => (
               <div
                 key={project._id}
                 className='text-[var(--secondary)] w-full flex flex-col items-start justify-start cursor-pointer'
-                onClick={() => { window.open(project.link, '_blank');}}
+                onClick={() => { window.open(project.link, '_blank'); }}
               >
                 <div className='flex flex-row items-center justify-between gap-4 w-full'>
                   <h2 className='text-2xl font-bold mb-2'>{project.title}</h2>
                   <p className='text-sm mb-2'>{project.category}</p>
                 </div>
                 {project.coverPhoto?.asset?.url && (
-                  <img 
-                    src={project.coverPhoto.asset.url} 
-                    alt={project.title} 
+                  <img
+                    src={project.coverPhoto.asset.url}
+                    alt={project.title}
                     className='w-full max-h-[900px] object-cover rounded mb-4'
                   />
                 )}

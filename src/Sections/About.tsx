@@ -55,7 +55,7 @@ const About = () => {
       scrollTrigger: {
         trigger: h1,
         start: 'top 80%',
-        end: 'bottom 30%',
+        end: 'bottom 40%',
         scrub: true,
         markers: false, // optional, for debug
       },
@@ -74,7 +74,7 @@ const About = () => {
   return (
     <div
       id="about-section"
-      className="min-h-screen w-screen relative flex flex-col justify-center items-center bg-[var(--secondary)]"
+      className=" h-full py-28 xl:py-0 xl:min-h-screen w-screen relative flex flex-col justify-center items-center bg-[var(--secondary)]"
       style={{ fontFamily: 'michroma' }}
     >
       <div className="absolute left-12 top-12 xl:text-[24px] font-mono flex items-center gap-2">
@@ -83,7 +83,7 @@ const About = () => {
 
       <h1
         ref={h1Ref}
-        className="w-3/5 text-[32px] md:text-[32px] lg:text-[32px] xl:text-[48px] 2xl:text-[48px]"
+        className="w-4/5 xl:w-3/5 text-[24px] xl:text-[32px] 2xl:text-[48px]"
       >
         &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203;
         Working with AIRRE is an absolute game changer. their approach bought

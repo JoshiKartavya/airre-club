@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './index.css'
 import App from './App.tsx'
-import { Blogs, Members, MemberDetail } from './Pages/indexPages'
+import { Blogs, Members, MemberDetail, Events } from './Pages/indexPages'
 import Lenis from '@studio-freight/lenis'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -78,6 +78,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="blog" element={<Blogs />} />
           <Route path="members" element={<Members />} />
           <Route path="members/:slug" element={<MemberDetail />} />
+          <Route path="events" element={<Events />} />
         </Routes>
       </BrowserRouter>
     </LenisProvider>

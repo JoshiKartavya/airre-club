@@ -49,21 +49,21 @@ const Members = () => {
     }, []);
 
     return (
-        <div className='max-w-screen h-screen bg-[var(--secondary)] text-[var(--primary)] font-michroma flex flex-col items-center justify-start pt-28' style={{fontFamily: "michroma"}}>
-            <div className='w-[96%] rounded-2xl h-full flex flex-col items-start justify-start p-8 bg-[var(--primary)] text-[var(--secondary)] relative'>
+        <div className='max-w-screen h-max bg-[var(--secondary)] text-[var(--primary)] font-michroma flex flex-col items-center justify-start pt-28' style={{fontFamily: "michroma"}}>
+            <div className='w-[96%] rounded-2xl h-full flex flex-col items-start justify-start py-8 px-4 xl:p-8 bg-[var(--primary)] text-[var(--secondary)] relative'>
                 <div className="absolute left-12 top-12 xl:text-[24px] font-mono flex items-center gap-2">
                     <span className="text-xl">&#123;&#125;</span> Our Members
                 </div>
 
                 <div className='member-main w-full h-full flex flex-col items-center justify-start gap-4 mt-12'>
-                    <div className='member-cards w-full h-full flex flex-row items-center justify-start gap-4'>
+                    <div className='member-cards w-full h-full grid grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4'>
                         {loading ? (
                             <div>Loading...</div>
                         ) : (
                             members.map((member) => (
                                 <div
                                     key={member._id}
-                                    className="p-4 flex flex-col items-start w-[456px] cursor-pointer"
+                                    className="p-3 xl:p-4 flex flex-col items-start justify-center w-[160px] xl:w-[456px] cursor-pointer"
                                     onClick={() => member.slug?.current && navigate(`/members/${member.slug.current}`)}
                                 >
                                     {member.coverImage?.asset?.url && (
@@ -73,7 +73,7 @@ const Members = () => {
                                             className="w-full h-full object-cover mb-2"
                                         />
                                     )}
-                                    <div className="font-bold text-lg">{member.name}</div>
+                                    <div className="font-bold text-[16px] xl:text-[24px]">{member.name}</div>
                                 </div>
                             ))
                         )}
