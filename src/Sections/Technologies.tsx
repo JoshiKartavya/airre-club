@@ -1,3 +1,44 @@
+/**
+ * Responsive analysis for Technologies section:
+ * 
+ * TEXT SIZES:
+ * - "Our Experties" (top left):
+ *   - base: text-xl (20px)
+ *   - xl: text-[24px]
+ * - Main heading (h1.ser-title):
+ *   - base: text-2xl (24px)
+ *   - sm: text-3xl (30px)
+ *   - md: text-4xl (36px)
+ *   - lg: text-6xl (60px)
+ *   - xl: text-6xl (60px)
+ *   - 2xl: text-7xl (72px)
+ * - Service title (h3):
+ *   - base/sm/md: text-[16px]
+ *   - lg/xl: text-[24px]
+ * 
+ * IMAGE SIZES:
+ * - Arrow image:
+ *   - base: w-16 (64px)
+ *   - sm: w-18 (72px)
+ *   - md: w-18 (72px)
+ *   - lg: w-20 (80px)
+ *   - xl/2xl: w-28 (112px)
+ * - Service card:
+ *   - base: w-[160px]
+ *   - xl: w-[400px]
+ *   - aspect-[232/337] (fixed aspect ratio)
+ * 
+ * PADDING/MARGINS:
+ * - Top section: pt-20 (base), xl:pt-60
+ * - Arrow: px-8/py-12 (base), xl:px-36/py-24
+ * - Services grid: px-4/py-12 (base), xl:px-0/py-0/pr-20/pb-20
+ * - Grid gap: gap-x-4/gap-y-8 (base), xl:gap-x-8
+ * - Service title position: bottom-2/left-2 (base), xl:bottom-4/left-4
+ * 
+ * GRID:
+ * - Services: grid-cols-2 (all), xl:grid-cols-2
+ */
+
 const Technologies = () => {
   const services = [
     { id: 1, title: "Humanoid", image: "/images/frame1.svg" },
@@ -19,10 +60,13 @@ const Technologies = () => {
   };
 
   return (
-    <div id="Experties" className="services-main h-max w-full bg-[var(--primary)] text-[var(--secondary)] relative" style={{fontFamily: "michroma"}}>
-
+    <div
+      id="Experties"
+      className="services-main h-max w-full bg-[var(--primary)] text-[var(--secondary)] relative"
+      style={{ fontFamily: "michroma" }}
+    >
       {/* Contact us top left */}
-      <div className="absolute left-12 top-12 xl:text-[24px] font-mono flex items-center gap-2">
+      <div className="absolute left-12 top-12 text-xl xl:text-[24px] font-mono flex items-center gap-2">
         <span className="text-xl">&#123;&#125;</span> Our Experties
       </div>
 
@@ -43,9 +87,14 @@ const Technologies = () => {
 
       {/* Content */}
       <div className="content flex flex-row w-full h-max">
+        {/* Arrow image - only visible on xl and up */}
         <div className="arrow hidden xl:block w-1/3 h-max px-8 xl:px-36 py-12 xl:py-24">
           <div className="arrow-img relative w-16 sm:w-18 md:w-18 lg:w-20 xl:w-28 2xl:w-28 aspect-square">
-            <img src="/icons/arrow.svg" alt="arrow" className="w-full h-full object-contain" />
+            <img
+              src="/icons/arrow.svg"
+              alt="arrow"
+              className="w-full h-full object-contain"
+            />
           </div>
         </div>
         <div className="services w-full flex justify-center xl:justify-end xl:pr-20 xl:pb-20 px-4 xl:px-0 py-12 xl:py-0">
@@ -67,7 +116,7 @@ const Technologies = () => {
                     <h3 className="text-[16px] sm:text-[16px] md:text-[16px] lg:text-[24px] xl:text-[24px] font-michroma text-left">
                       {formatTitle(service.title)}
                     </h3>
-                  </div>                
+                  </div>
                 </div>
               </div>
             ))}
@@ -75,7 +124,7 @@ const Technologies = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Technologies
+export default Technologies;

@@ -53,11 +53,11 @@ const Navbar = ({ textColor, bgColor }: NavbarProps) => {
           </div>
 
           <div className="flex flex-row justify-between items-start w-full">
-            <div className="flex flex-col justify-start items-start mt-12 xl:mt-28 xl:gap-12 gap-4">
+            <div className="flex flex-col justify-start items-start mt-12 xl:mt-28 xl:gap-4 gap-4">
               {/* Navigation Links */}
               <div className="flex flex-col justify-start items-start">
                 <h2 className="text-[24px] md:text-[24px] lg:text-[24px] xl:text-[32px] 2xl:text-[34px] mb-8">Navigation links</h2>
-                <div className="space-y-6 text-[16px] md:text-[16px] lg:text-[16px] xl:text-[24px] 2xl:text-[24px] grid grid-cols-2 xl:grid-cols-1 gap-4">
+                <div className="text-[16px] md:text-[16px] lg:text-[16px] xl:text-[24px] 2xl:text-[24px] grid grid-cols-1 xl:grid-cols-1 gap-4">
                   <p><a href="/" className="hover:underline">Home</a></p>
                   <p><a href="/blog" className="hover:underline">Blogs</a></p>
                   <p><a href="/events" className="hover:underline">Events</a></p>
@@ -68,7 +68,7 @@ const Navbar = ({ textColor, bgColor }: NavbarProps) => {
               {/* Social Media Links */}
               <div>
                 <h2 className="text-[24px] md:text-[24px] lg:text-[24px] xl:text-[32px] 2xl:text-[34px] mt-12 mb-8">Social Media links</h2>
-                <div className="space-y-6 text-[16px] md:text-[16px] lg:text-[16px] xl:text-[24px] 2xl:text-[24px] grid grid-cols-2 xl:grid-cols-1 gap-4">
+                <div className="text-[16px] md:text-[16px] lg:text-[16px] xl:text-[24px] 2xl:text-[24px] grid grid-cols-1 xl:grid-cols-1 gap-4">
                   <p><a href="#" className="hover:underline">Twitter</a></p>
                   <p><a href="#" className="hover:underline">Github</a></p>
                   <p><a href="#" className="hover:underline">Hugging face</a></p>

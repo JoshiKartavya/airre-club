@@ -4,6 +4,41 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
+/**
+ * Responsive Analysis:
+ * 
+ * Text Elements:
+ * - "About us" label (top left): 
+ *    - Font size: 
+ *        - sm: 16px (default text-xl)
+ *        - md: 20px (text-2xl)
+ *        - lg: 24px (xl:text-[24px])
+ * - Main h1 text:
+ *    - Width:
+ *        - sm: 80% (w-4/5)
+ *        - md: 70% (md:w-3/4)
+ *        - lg: 60% (xl:w-3/5)
+ *    - Font size:
+ *        - sm: 24px (text-[24px])
+ *        - md: 32px (md:text-[32px])
+ *        - lg: 48px (2xl:text-[48px])
+ * - Highlighted spans:
+ *    - Inherit font size from h1, color: var(--contrast)
+ * 
+ * Container:
+ * - Padding top/bottom:
+ *    - sm: py-28 (7rem)
+ *    - md: py-20 (5rem)
+ *    - lg: py-0 (xl:py-0)
+ * - Min height:
+ *    - sm: none
+ *    - lg: min-h-screen (xl:min-h-screen)
+ * 
+ * Images: None in this section.
+ * 
+ * Responsive Tailwind classes are used for all breakpoints.
+ */
+
 const About = () => {
   const h1Ref = useRef<HTMLHeadingElement>(null);
 
@@ -57,14 +92,13 @@ const About = () => {
         start: 'top 80%',
         end: 'bottom 40%',
         scrub: true,
-        markers: false, // optional, for debug
+        markers: false,
       },
     });
 
-    // ⛔ IMPORTANT: refresh ScrollTrigger AFTER DOM is updated and after images (if any) are loaded
     setTimeout(() => {
       ScrollTrigger.refresh();
-    }, 500); // wait for DOM to fully update
+    }, 500);
 
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
@@ -74,16 +108,31 @@ const About = () => {
   return (
     <div
       id="about-section"
-      className=" h-full py-28 xl:py-0 xl:min-h-screen w-screen relative flex flex-col justify-center items-center bg-[var(--secondary)]"
+      className="
+        h-full 
+        py-28 md:py-20 xl:py-0 
+        xl:min-h-screen 
+        w-screen 
+        relative 
+        flex flex-col justify-center items-center 
+        bg-[var(--secondary)]
+      "
       style={{ fontFamily: 'michroma' }}
     >
-      <div className="absolute left-12 top-12 xl:text-[24px] font-mono flex items-center gap-2">
+      <div className="
+        absolute left-6 top-6 
+        text-xl md:text-2xl xl:text-[24px] 
+        font-mono flex items-center gap-2
+      ">
         <span className="text-xl">&#123;&#125;</span> About us
       </div>
 
       <h1
         ref={h1Ref}
-        className="w-4/5 xl:w-3/5 text-[24px] xl:text-[32px] 2xl:text-[48px]"
+        className="
+          w-4/5 md:w-3/4 xl:w-3/5 
+          text-[24px] md:text-[32px] 2xl:text-[48px]
+        "
       >
         &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203;
         Working with AIRRE is an absolute game changer. their approach bought
