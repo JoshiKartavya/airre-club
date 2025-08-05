@@ -135,11 +135,10 @@ const About = () => {
         "
       >
         &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203;
-        Working with AIRRE is an absolute game changer. their approach bought
-        <span className="text-[var(--contrast)]"> clarity & clean </span>
-        to our brand. making every detail feel
-        <span className="text-[var(--contrast)]"> intention and impactful</span>.
-        the designs are not just beautiful - they tell a story
+        <span className="text-[var(--contrast)]"> AIRRE (AI - Robotics - Rocketry - Energy) </span>
+        is a student-led club exploring
+        <span className="text-[var(--contrast)]">frontier technologies.</span>
+        We innovate through hands-on projects in AI, robotics, rocketry, and sustainable energy to shape tomorrow’s tech today.
       </h1>
     </div>
   );
