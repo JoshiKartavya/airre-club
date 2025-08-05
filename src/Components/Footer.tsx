@@ -6,11 +6,11 @@ interface FooterProps {
 const Footer = ({ textColor, bgColor }: FooterProps) => {
   return (
     <footer
-      className="w-screen h-full py-28 xl:py-0 xl:min-h-screen flex flex-col justify-center items-end bg-transparent relative pt-12 pb-8 px-4 overflow-x-hidden"
+      className="w-screen min-h-screen flex flex-col justify-center items-end bg-transparent relative pt-12 pb-8 px-4 overflow-x-hidden"
       style={{ fontFamily: "michroma", color: textColor, backgroundColor: bgColor }}
     >
       {/* Contact us top left */}
-      <div className="absolute left-12 top-12 xl:text-[24px] font-mono flex items-center gap-2">
+      <div className="absolute left-4 top-4 xl:left-12 xl:top-12 xl:text-[24px] font-mono flex items-center gap-2">
         <span className="text-xl">&#123;&#125;</span> Contact us
       </div>
 
