@@ -55,7 +55,7 @@ const Members = () => {
 
   return (
     <>
-    <div className="w-full min-h-screen overflow-x-hidden">
+    <div className="w-full min-h-screen overflow-x-hidden" style={{ fontFamily: "michroma" }}>
         <Navbar textColor="var(--secondary)" bgColor="var(--primary)" />
         <div className='w-full min-h-screen overflow-x-hidden bg-[var(--primary)] text-[var(--secondary)] font-michroma flex flex-col items-start justify-start px-4 py-20 xl:py-28 xl:px-32' style={{ fontFamily: "michroma" }}>
           <h1 className="text-[32px] md:text-[32px] lg:text-[32px] xl:text-[64px] 2xl:text-[64px]">
