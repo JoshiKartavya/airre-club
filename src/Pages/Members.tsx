@@ -69,7 +69,7 @@ const Members = () => {
                 members.map((member) => (
                   <div
                     key={member._id}
-                    className="flex flex-col items-start flex-wrap w-[180px] sm:w-[200px] md:w-[220px] lg:w-[280px] xl:w-[280px] 2xl:w-[380px] cursor-pointer"
+                    className="flex flex-col items-start justify-start flex-wrap w-[160px] sm:w-[200px] md:w-[220px] lg:w-[280px] xl:w-[280px] 2xl:w-[380px] cursor-pointer"
                     onClick={() => member.slug?.current && navigate(`/members/${member.slug.current}`)}
                   >
                     <div className="w-full aspect-[3/4] overflow-hidden mb-2 flex items-center justify-center">

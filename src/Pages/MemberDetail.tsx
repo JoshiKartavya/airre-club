@@ -29,15 +29,10 @@ interface Blog {
   publishedAt?: string;
 }
 
-// Helper to highlight member name and numbers in about text
 function highlightMemberNameAndNumbers(about: string, name: string) {
   if (!about) return about;
 
-  // Escape RegExp special chars in name
   const escapedName = name ? name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') : '';
-  // Build a regex that matches either the member name or any number
-  // The number regex: \d+(\.\d+)? (matches integers and decimals)
-  // If name is empty, just match numbers
   const regex = escapedName
     ? new RegExp(`(${escapedName}|\\d+(?:\\.\\d+)?)`, "gi")
     : new RegExp(`(\\d+(?:\\.\\d+)?)`, "g");
@@ -166,11 +161,11 @@ const MemberDetail = () => {
         ) : member ? (
           <>
             <div className="w-full px-4 md:px-16 xl:px-32 flex flex-col xl:gap-8">
-              <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-[48px] 2xl:text-[52px] mb-2">{member.name} {member.role ? `| ${member.role}` : ""}</h1>
+              <h1 className="text-[28px] md:text-[] lg:text-[] xl:text-[48px] 2xl:text-[52px] mb-2">{member.name} {member.role ? `| ${member.role}` : ""}</h1>
 
               {/* Member content */}
               <div className="w-full flex flex-col xl:flex-row justify-start xl:gap-12">
-                <div className="image w-full max-w-[456px]">
+                <div className="image w-2/3 xl:max-w-[456px]">
                   {member.coverImage?.asset?.url && (
                     <img
                       src={member.coverImage.asset.url}
@@ -211,7 +206,7 @@ const MemberDetail = () => {
               </div>
 
               {/* Images Section */}
-              <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-[48px] 2xl:text-[52px] mb-6">
+              <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-[48px] 2xl:text-[52px] mb-6 mt-12 xl:mt-0">
                 Some of my images you can look at
               </h1>
 
@@ -233,7 +228,7 @@ const MemberDetail = () => {
               </div>
 
               {/* Blog section */}
-              <div>
+              <div className="mt-12 xl:mt-0">
                 <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-[48px] 2xl:text-[52px] mb-2">Look 👀 at my blogs :</h1>
                 {blogs.length === 0 ? (
                   <div>No blogs found for this member.</div>

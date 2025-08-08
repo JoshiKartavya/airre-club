@@ -138,7 +138,7 @@ const About = () => {
         <span className="text-[var(--contrast)]"> AIRRE (AI - Robotics - Rocketry - Energy) </span>
         is a student-led club exploring
         <span className="text-[var(--contrast)]">frontier technologies.</span>
-        We innovate through hands-on projects in AI, robotics, rocketry, and sustainable energy to shape tomorrow’s tech today.
+        We innovate through hands-on projects in AI, robotics, rocketry, and sustainable energy to shape tomorrow&rsquo;s tech today.
       </h1>
     </div>
   );
