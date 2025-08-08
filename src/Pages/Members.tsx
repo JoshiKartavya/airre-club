@@ -62,32 +62,32 @@ const Members = () => {
             Supportive pillers of AIRRE
           </h1>
           <div className='member-main w-full flex flex-col items-center justify-start gap-4 mt-12'>
-            <div className='member-cards w-full flex flex-row flex-wrap items-center justify-start gap-4'>
+            <div className='member-cards w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6'>
               {loading ? (
                 <div>Loading...</div>
               ) : (
                 members.map((member) => (
                   <div
                     key={member._id}
-                    className="flex flex-col items-start justify-start flex-wrap w-[160px] sm:w-[200px] md:w-[220px] lg:w-[280px] xl:w-[280px] 2xl:w-[380px] cursor-pointer"
+                    className="flex flex-col items-start justify-start cursor-pointer group"
                     onClick={() => member.slug?.current && navigate(`/members/${member.slug.current}`)}
                   >
-                    <div className="w-full aspect-[3/4] overflow-hidden mb-2 flex items-center justify-center">
+                    <div className="w-full aspect-[3/4] overflow-hidden mb-3 flex items-center justify-center">
                       {member.coverImage?.asset?.url ? (
                         <img
                           src={member.coverImage.asset.url}
                           alt={member.name}
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                           style={{ minHeight: 0, minWidth: 0 }}
                         />
                       ) : (
-                        <div className="w-full h-full flex items-center justify-center text-gray-400 text-sm">
+                        <div className="w-full h-full flex items-center justify-center text-gray-400 text-sm bg-gray-100 rounded-lg">
                           No Image
                         </div>
                       )}
                     </div>
-                    <div className="font-bold text-lg">{member.name}</div>
-                    {member.role && <div className="text-sm text-gray-500">{member.role}</div>}
+                    <div className="font-bold text-lg text-start">{member.name}</div>
+                    {member.role && <div className="text-sm text-gray-500 text-start">{member.role}</div>}
                   </div>
                 ))
               )}
