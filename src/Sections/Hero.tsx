@@ -35,22 +35,24 @@ const Hero = () => {
 
                     {/* Hero Description */}
                     <motion.div
-                        className="flex flex-col items-start justify-start gap-8 hidden xl:block"
+                        className="hidden xl:block"
                         initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
                     >
-                        <p className="text-[16px] md:text-[16px] lg:text-[16px] 2xl:text-[24px] w-4/5">
-                            Reimagining the future with AIRRE
-                        </p>
-                        <div className="flex flex-row items-center justify-start ">
-                            <button className="bg-[var(--secondary)] text-[var(--primary)] px-4 py-2 rounded-md cursor-pointer" onClick={() => {
-                                window.open("https://airre.ai/join", "_blank")
-                            }}>
-                                <p className="text-[16px] md:text-[16px] lg:text-[16px] 2xl:text-[24px]">
-                                    Join the team
-                                </p>
-                            </button>
+                        <div className="flex flex-col items-start justify-start gap-4">
+                            <p className="text-[16px] md:text-[16px] lg:text-[16px] 2xl:text-[24px] w-4/5">
+                                Reimagining the future with AIRRE
+                            </p>
+                            <div className="flex flex-row items-center justify-start ">
+                                <button className="bg-[var(--secondary)] text-[var(--primary)] px-4 py-2 rounded-md cursor-pointer" onClick={() => {
+                                    window.open("https://airre.ai/join", "_blank")
+                                }}>
+                                    <p className="text-[16px] md:text-[16px] lg:text-[16px] 2xl:text-[24px]">
+                                        Join the team
+                                    </p>
+                                </button>
+                            </div>
                         </div>
                     </motion.div>
                 </div>

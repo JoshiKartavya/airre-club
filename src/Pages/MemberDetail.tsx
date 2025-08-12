@@ -72,6 +72,9 @@ const MemberDetail = () => {
   const [images, setImages] = useState<MemberImage[]>([]);
 
   useEffect(() => {
+
+    window.scrollTo(0, 0);
+
     if (!slug) return;
     setLoading(true);
     sanityClient
@@ -174,7 +177,7 @@ const MemberDetail = () => {
                     />
                   )}
                 </div>
-                <div className="memberContent w-full xl:w-3/5 xl:gap-18">
+                <div className="memberContent w-full xl:w-3/5 xl:gap-18" style={{ fontFamily: "nunito" }}>
                   <h2 className="xl:text-[32px]">
                     {member.about
                       ? highlightMemberNameAndNumbers(member.about, member.name)

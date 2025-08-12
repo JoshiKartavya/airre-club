@@ -193,18 +193,18 @@ const Projects = () => {
             {projects.map((project) => (
               <div
                 key={project._id}
-                className='text-[var(--secondary)] w-full flex flex-col items-start justify-start cursor-pointer'
+                className='text-[var(--secondary)] w-[80%] flex flex-col items-start justify-start cursor-pointer'
                 onClick={() => { window.open(project.link, '_blank'); }}
               >
                 <div className='flex flex-row items-center justify-between gap-2 md:gap-4 w-full'>
-                  <h2 className='text-xl md:text-2xl lg:text-3xl font-bold mb-1 md:mb-2'>{project.title}</h2>
-                  <p className='text-sm md:text-base lg:text-lg mb-1 md:mb-2'>{project.category}</p>
+                  <h2 className='text-[12px] md:text-2xl lg:text-3xl font-bold mb-1 md:mb-2'>{project.title}</h2>
+                  <p className='text-[8px] md:text-base lg:text-lg mb-1 md:mb-2'>{project.category}</p>
                 </div>
                 {project.coverPhoto?.asset?.url && (
                   <img
                     src={project.coverPhoto.asset.url}
                     alt={project.title}
-                    className='w-full max-h-[200px] md:max-h-[400px] lg:max-h-[700px] xl:max-h-[900px] object-cover rounded mb-2 md:mb-4'
+                    className='w-full max-h-[200px] md:max-h-[400px] lg:max-h-[700px] xl:max-h-[900px] object-cover mb-2 md:mb-4'
                   />
                 )}
               </div>
