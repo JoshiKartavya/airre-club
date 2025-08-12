@@ -168,7 +168,7 @@ const MemberDetail = () => {
 
               {/* Member content */}
               <div className="w-full flex flex-col xl:flex-row justify-start xl:gap-12">
-                <div className="image w-2/3 xl:max-w-[456px]">
+                <div className="image w-2/3 xl:max-w-[456px] aspect-[9/12]">
                   {member.coverImage?.asset?.url && (
                     <img
                       src={member.coverImage.asset.url}
