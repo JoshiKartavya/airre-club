@@ -33,6 +33,7 @@ interface Event {
     location: string;
     date: string;
     coverImage?: { asset: { url: string } };
+    link?: string;
 }
 
 const EventSection = () => {
@@ -46,7 +47,7 @@ const EventSection = () => {
 
     useEffect(() => {
         client.fetch(
-            `*[_type == "event"]{_id, title, description, location, date, coverImage{asset->{url}}}`
+            `*[_type == "event"]{_id, title, description, location, date, link, coverImage{asset->{url}}}`
         ).then((data) => {
             setEvents(data);
             setLoading(false);
@@ -175,7 +176,13 @@ const EventSection = () => {
                                                     rounded-md cursor-pointer 
                                                     text-[14px] md:text-[16px] lg:text-[20px] xl:text-[24px]
                                                 '
-                                                // onClick={() => setIsPopupOpen(true)}
+                                                onClick={() => {
+                                                    if (event.link) {
+                                                        window.open(event.link, '_blank');
+                                                    }
+                                                }}
+                                                disabled={!event.link}
+                                                style={event.link ? {} : { opacity: 0.5, cursor: 'not-allowed' }}
                                             >
                                                 Register
                                             </button>
