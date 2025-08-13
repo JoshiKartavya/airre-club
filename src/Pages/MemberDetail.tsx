@@ -168,7 +168,7 @@ const MemberDetail = () => {
 
               {/* Member content */}
               <div className="w-full flex flex-col xl:flex-row justify-start xl:gap-12">
-                <div className="image w-2/3 xl:max-w-[456px] aspect-[9/12]">
+                <div className="image w-2/3 xl:max-w-[356px] aspect-[9/12]">
                   {member.coverImage?.asset?.url && (
                     <img
                       src={member.coverImage.asset.url}
@@ -178,12 +178,12 @@ const MemberDetail = () => {
                   )}
                 </div>
                 <div className="memberContent w-full xl:w-3/5 xl:gap-18" style={{ fontFamily: "nunito" }}>
-                  <h2 className="xl:text-[32px]">
+                  <h2 className="xl:text-[32px] mt-8">
                     {member.about
                       ? highlightMemberNameAndNumbers(member.about, member.name)
                       : null}
                   </h2>
-                  <div className="memberSocials xl:mt-12">
+                  <div className="memberSocials mt-8 xl:mt-12">
                     <h3 className="xl:text-[40px] font-thin">You can connect me on &darr;</h3>
                     {/* Social Media Section */}
                     {Array.isArray(member.social) && member.social.length > 0 && (

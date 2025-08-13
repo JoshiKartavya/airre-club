@@ -117,7 +117,7 @@ const About = () => {
         flex flex-col justify-center items-center 
         bg-[var(--secondary)]
       "
-      style={{ fontFamily: 'michroma' }}
+      style={{ fontFamily: 'nunito' }}
     >
       <div className="
         absolute left-6 top-6 
@@ -137,8 +137,8 @@ const About = () => {
         &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203; &#8203;
         <span className="text-[var(--contrast)]"> AIRRE (AI - Robotics - Rocketry - Energy) </span>
         is a student-led club exploring
-        <span className="text-[var(--contrast)]">frontier technologies.</span>
-        We innovate through hands-on projects in AI, robotics, rocketry, and sustainable energy to shape tomorrow&rsquo;s tech today.
+        <span className="text-[var(--contrast)]">&#8203; frontier technologies.</span>
+        &#8203; We innovate through hands-on projects in AI, robotics, rocketry, and sustainable energy to shape tomorrow&rsquo;s tech today.
       </h1>
     </div>
   );

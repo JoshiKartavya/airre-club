@@ -19,12 +19,15 @@ const Footer = ({ textColor, bgColor }: FooterProps) => {
         <h2 className="text-[24px] xl:text-[32px] 2xl:text-[64px] font-michroma text-center mb-6 leading-tight">
           Let's Shape the<br />future together!
         </h2>
-        <a
-          href="mailto:hello@airre.club"
-          className="border-2 rounded-lg px-8 py-2 text-[16px] xl:text-[24px] font-michroma flex items-center gap-2 mb-8 hover:bg-[var(--secondary)] hover:text-[var(--primary)] transition-colors"
+        <button
+          onClick={() => {
+            window.location.href = "mailto:hello@airre.club";
+          }}
+          type="button"
+          className="border-2 rounded-lg cursor-pointer px-8 py-2 text-[16px] xl:text-[24px] font-michroma flex items-center gap-2 mb-8 hover:bg-[var(--primary)] hover:text-[var(--secondary)] transition-colors"
         >
           Connect with us <span className="text-[16px] xl:text-[24px]">&#8250;</span>
-        </a>
+        </button>
         <hr className="w-full border-t-2 my-4" />
 
         {/* Copyright */}

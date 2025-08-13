@@ -46,7 +46,7 @@ const Hero = () => {
                             </p>
                             <div className="flex flex-row items-center justify-start ">
                                 <button className="bg-[var(--secondary)] text-[var(--primary)] px-4 py-2 rounded-md cursor-pointer" onClick={() => {
-                                    window.open("https://airre.ai/join", "_blank")
+                                    window.open("https://forms.gle/iBVHEFScAcHp611o8", "_blank")
                                 }}>
                                     <p className="text-[16px] md:text-[16px] lg:text-[16px] 2xl:text-[24px]">
                                         Join the team

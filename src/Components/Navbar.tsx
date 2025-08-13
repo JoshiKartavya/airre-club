@@ -40,7 +40,7 @@ const Navbar = ({ textColor, bgColor }: NavbarProps) => {
 
       {/* Overlay Nav Menu */}
       {menuOpen && (
-        <div className="fixed top-0 right-0 h-screen w-full xl:w-1/2 min-w-[320px] bg-black/60 backdrop-blur-xl text-white z-50 flex flex-col justify-start items-start p-8 font-michroma animate-fade-in pl-12" style={{ backgroundColor: "rgba(0,0,0,0.5)", backdropFilter: "blur(24px)" }}>
+        <div className="fixed top-0 right-0 h-screen w-full xl:w-1/2 min-w-[320px] bg-white/60 backdrop-blur-xl border-l-2 border-l-white text-black z-50 flex flex-col justify-start items-start p-8 font-michroma animate-fade-in pl-12" style={{ backgroundColor: "rgba(255,255,255,0.4)", backdropFilter: "blur(24px)" }}>
           {/* Close Icon */}
           <div className="  cursor-pointer absolute top-3 right-3 z-[60]">
             <button
@@ -84,10 +84,10 @@ const Navbar = ({ textColor, bgColor }: NavbarProps) => {
           </div>
 
           {/* Decorative corners */}
-          <div className="flex justify-between w-full absolute bottom-12 left-0 px-8">
+          {/* <div className="flex justify-between w-full absolute bottom-12 left-0 px-8">
             <img src="/images/star.png" alt="Star" />
             <img src="/images/star.png" alt="Star" />
-          </div>
+          </div> */}
         </div>
       )}
     </>

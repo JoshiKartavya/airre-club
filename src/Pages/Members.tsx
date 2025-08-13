@@ -29,6 +29,8 @@ const Members = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+    
     sanityClient
       .fetch(
         `*[_type == "member"]{

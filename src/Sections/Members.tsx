@@ -56,24 +56,24 @@ const Members = () => {
                 </div>
 
                 <div className='member-main w-full h-full flex flex-col items-center justify-start gap-4 mt-12'>
-                    <div className='member-cards w-full h-full grid grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4'>
+                    <div className='member-cards w-full h-full grid grid-cols-2 xl:grid-cols-4 gap-4'>
                         {loading ? (
                             <div>Loading...</div>
                         ) : (
                             members.map((member) => (
                                 <div
                                     key={member._id}
-                                    className="p-3 xl:p-4 flex flex-col items-start justify-center w-[160px] xl:w-[456px] cursor-pointer"
+                                    className="p-3 xl:p-4 flex flex-col items-start justify-center w-[160px] sm:w-[220px] md:w-[280px] lg:w-[380px] xl:w-[326px] 2xl:w-[426px] cursor-pointer"
                                     onClick={() => member.slug?.current && navigate(`/members/${member.slug.current}`)}
                                 >
                                     {member.coverImage?.asset?.url && (
                                         <img
                                             src={member.coverImage.asset.url}
                                             alt={member.name}
-                                            className="w-full h-full object-cover mb-2"
+                                            className="w-full h-full object-cover mb-2 transition-transform duration-300 group-hover:scale-105"
                                         />
                                     )}
-                                    <div className="font-bold text-[16px] xl:text-[24px]">{member.name}</div>
+                                    <div className="text-[16px] xl:text-[24px]">{member.name}</div>
                                 </div>
                             ))
                         )}
