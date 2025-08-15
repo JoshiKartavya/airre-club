@@ -69,10 +69,11 @@ const Navbar = ({ textColor, bgColor }: NavbarProps) => {
               <div>
                 <h2 className="text-[24px] md:text-[24px] lg:text-[24px] xl:text-[32px] 2xl:text-[34px] mt-12 mb-8">Social Media links</h2>
                 <div className="text-[16px] md:text-[16px] lg:text-[16px] xl:text-[24px] 2xl:text-[24px] grid grid-cols-1 xl:grid-cols-1 gap-4">
-                  <p><a href="#" className="hover:underline">Twitter</a></p>
-                  <p><a href="#" className="hover:underline">Github</a></p>
-                  <p><a href="#" className="hover:underline">Hugging face</a></p>
-                  <p><a href="#" className="hover:underline">Youtube</a></p>
+                  <p><a href="https://x.com/airr_club" className="hover:underline">Twitter</a></p>
+                  <p><a href="https://github.com/airre-club" className="hover:underline">Github</a></p>
+                  <p><a href="https://huggingface.co/airr-club-palanpur" className="hover:underline">Hugging face</a></p>
+                  <p><a href="https://www.youtube.com/@airre-club" className="hover:underline">Youtube</a></p>
+                  <p><a href="https://www.instagram.com/airreclub/" className="hover:underline">Instagram</a></p>
                 </div>
               </div>
             </div>
