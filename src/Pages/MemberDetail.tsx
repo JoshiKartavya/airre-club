@@ -27,6 +27,7 @@ interface Blog {
   title: string;
   coverImage?: { asset?: { url?: string } };
   publishedAt?: string;
+  blogLink?: string;
 }
 
 function highlightMemberNameAndNumbers(about: string, name: string) {
@@ -127,6 +128,7 @@ const MemberDetail = () => {
         
         setImages(Array.isArray(data?.images) ? data.images : []);
 
+        // Fetch Blog
         if (data?._id) {
           sanityClient
             .fetch(
@@ -134,7 +136,8 @@ const MemberDetail = () => {
                 _id,
                 title,
                 coverImage{asset->{url}},
-                publishedAt
+                publishedAt,
+                blogLink
               }`,
               { memberId: data._id }
             )
@@ -221,7 +224,7 @@ const MemberDetail = () => {
                         key={idx}
                         src={img.asset.url}
                         alt={`Member image ${idx + 1}`}
-                        className="w-full mb-4 rounded-lg break-inside-avoid"
+                        className="w-full mb-4 break-inside-avoid"
                       />
                     ) : null
                   )
@@ -249,13 +252,14 @@ const MemberDetail = () => {
                     {blogs.map((blog) => (
                       <div
                         key={blog._id}
-                        className="p-4 flex flex-col items-start"
+                        className="p-4 flex flex-col items-start cursor-pointer"
                       >
                         {blog.coverImage?.asset?.url && (
                           <img
                             src={blog.coverImage.asset.url}
                             alt={blog.title}
-                            className="w-full h-40 object-cover rounded mb-3"
+                            className="w-full h-40 object-cover mb-3"
+                            onClick={() => window.open(blog.blogLink, '_blank')}
                           />
                         )}
                         <h2 className="text-lg font-semibold text-center mb-2">{blog.title}</h2>

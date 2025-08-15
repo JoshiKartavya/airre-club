@@ -12,65 +12,6 @@ interface Project {
   link?: string;
 }
 
-/**
- * Responsive Analysis:
- * 
- * 1. Main container: w-screen, h-max, padding-bottom-32, font-michroma, etc.
- *    - Responsive: width is always 100vw, padding is fixed, but content width is controlled below.
- * 
- * 2. "Selected works" label (top left):
- *    - left-12 top-12: 3rem from left/top (fixed for all screens)
- *    - xl:text-[24px]: 24px font size on xl and up, default is inherited (likely 16px)
- *    - text-xl on the icon: 1.25rem (20px)
- *    - Responsive: Only the text size increases at xl (1280px+)
- *      - sm: ~16px, md: ~16px, lg: ~16px, xl: 24px
- * 
- * 3. Main content wrapper: w-4/5 (80% width), flex-col, items-start
- *    - Responsive: 80% width for all screens, but can be improved for mobile
- *      - sm: 90% (suggested), md: 80%, lg: 70%
- * 
- * 4. Animated h1:
- *    - className='text-[32px] md:text-[32px] lg:text-[32px] xl:text-[64px] 2xl:text-[64px] ... w-4/5 my-28 xl:my-60'
- *    - Responsive font size:
- *      - sm: 32px
- *      - md: 32px
- *      - lg: 32px
- *      - xl: 64px
- *      - 2xl: 64px
- *    - Responsive margin-y:
- *      - sm: my-28 (7rem)
- *      - xl: my-60 (15rem)
- * 
- * 5. Project card:
- *    - h2: text-2xl (1.5rem/24px), font-bold, mb-2
- *      - Responsive: always 24px
- *    - p: text-sm (0.875rem/14px), mb-2
- *      - Responsive: always 14px
- *    - img: w-full, max-h-[900px], object-cover, rounded, mb-4
- *      - Responsive: width always 100%, max-height 900px (could be large for mobile)
- *      - Suggest: max-h-[300px] for sm, [500px] for md, [900px] for lg+
- * 
- * 6. Project list wrapper:
- *    - gap-4, w-full, mt-12 xl:mt-24
- *      - Responsive: gap-4 (1rem), margin-top 3rem (sm), 6rem (xl)
- * 
- * 
- * Responsive values summary:
- * 
- * | Element         | sm                | md                | lg                |
- * |-----------------|-------------------|-------------------|-------------------|
- * | Main wrapper    | w-[90%]           | w-4/5 (80%)       | w-[70%]           |
- * | h1 font size    | text-[24px]       | text-[32px]       | text-[48px]       |
- * | h1 margin-y     | my-16             | my-28             | my-40             |
- * | h2 font size    | text-xl (20px)    | text-2xl (24px)   | text-3xl (30px)   |
- * | p font size     | text-sm (14px)    | text-base (16px)  | text-lg (18px)    |
- * | img max-h       | max-h-[200px]     | max-h-[400px]     | max-h-[700px]     |
- * | gap             | gap-2             | gap-4             | gap-6             |
- * 
- * 
- * Below is the code with responsive classes for sm, md, and lg breakpoints.
- */
-
 const Projects = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);

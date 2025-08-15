@@ -85,7 +85,7 @@ const BlogsSection = () => {
                   <img 
                     src={blog.coverImage.asset.url} 
                     alt={blog.title} 
-                    className='w-full h-full object-cover rounded mb-4 cursor-pointer'
+                    className='w-full h-full object-cover mb-4 cursor-pointer'
                     onClick={() => window.open(blog.blogLink, '_blank')}
                   />
                 )}
